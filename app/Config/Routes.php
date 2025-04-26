@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 // $routes->get('/', 'DashboardController::dashboard');
 $routes->get('/', 'DashboardController::dashboard', ['filter' => 'auth']);
-$routes->get('/dashboard', 'DashboardController::dashboard');
+$routes->get('/dashboard', 'DashboardController::dashboard', ['filter' => 'auth']);
 
 $routes->get('/bloglist', 'DashboardController::bloglist', ['filter' => 'auth']);
 $routes->get('/blogadd', 'DashboardController::blogadd', ['filter' => 'auth']);

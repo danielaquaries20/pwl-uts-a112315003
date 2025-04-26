@@ -23,8 +23,8 @@ class AuthController extends BaseController
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
 
-            $dataUser = ['id' => '1', 'username' => 'daniel', 'password' => '$2y$10$PCqkaG1zzVi.NiwOEGvBVOWz8jdkNfaQhONIdHOavuPWllzoPqLi.', 'role' => 'admin', 'fullname' => 'Daniel Aquaries Pratama'];
-            // $dataUser = ['id' => '1', 'username' => 'daniel', 'password' => '$2y$10$PCqkaG1zzVi.NiwOEGvBVOWz8jdkNfaQhONIdHOavuPWllzoPqLi.', 'role' => 'user', 'fullname' => 'Daniel Aquaries Pratama']; // passw 123
+            // $dataUser = ['id' => '1', 'username' => 'daniel', 'password' => '$2y$10$PCqkaG1zzVi.NiwOEGvBVOWz8jdkNfaQhONIdHOavuPWllzoPqLi.', 'role' => 'admin', 'fullname' => 'Daniel Aquaries Pratama'];
+            $dataUser = ['id' => '1', 'username' => 'daniel', 'password' => '$2y$10$PCqkaG1zzVi.NiwOEGvBVOWz8jdkNfaQhONIdHOavuPWllzoPqLi.', 'role' => 'user', 'fullname' => 'Daniel Aquaries Pratama']; // passw 123
 
             if ($username == $dataUser['username']) {
                 if (password_verify($password, $dataUser['password'])) {
@@ -36,7 +36,13 @@ class AuthController extends BaseController
                         'isLoggedIn' => TRUE
                     ]);
 
-                    return redirect()->to(base_url('/'));
+                    if($dataUser['role'] == 'admin') {
+                        return redirect()->to(base_url('/'));
+                    } else {
+                        return redirect()->to(base_url('/bloglist'));
+                    }
+
+                   
                 } else {
                     session()->setFlashdata('failed', 'Username & Password Salah');
                     return redirect()->back();
