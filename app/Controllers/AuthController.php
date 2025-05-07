@@ -23,6 +23,7 @@ class AuthController extends BaseController
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
 
+            //pass: daniel2025
             // $dataUser = ['id' => '1', 'username' => 'daniel', 'password' => '$2y$10$PCqkaG1zzVi.NiwOEGvBVOWz8jdkNfaQhONIdHOavuPWllzoPqLi.', 'role' => 'admin', 'fullname' => 'Daniel Aquaries Pratama'];
             $dataUser = ['id' => '1', 'username' => 'daniel', 'password' => '$2y$10$PCqkaG1zzVi.NiwOEGvBVOWz8jdkNfaQhONIdHOavuPWllzoPqLi.', 'role' => 'user', 'fullname' => 'Daniel Aquaries Pratama']; // passw 123
 
